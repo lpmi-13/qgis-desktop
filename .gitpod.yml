@@ -5,6 +5,6 @@ tasks:
     init: docker build -t desktop-qgis .
     command: docker run --rm -ti --env=DISPLAY=unix${DISPLAY} --volume=/tmp/.X11-unix:/tmp/.X11-unix --volume=${HOME}:${HOME} desktop-qgis
 
-ports:
-  - port: 6080
-    onOpen: open-browser
+  # this is in a task instead of in the "ports" section to force https
+  - name: open the VNC server window in the browser
+    command: gp preview https://localhost:6080
