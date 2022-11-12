@@ -1,0 +1,5 @@
+image: gitpod/workspace-full-vnc
+
+tasks:
+  init: docker build -t desktop-qgis .
+  command: echo "ready to party!"
