@@ -3,4 +3,8 @@ image: gitpod/workspace-full-vnc
 tasks:
   - name: build the qgis container
     init: docker build -t desktop-qgis .
-    command: echo "ready to party!"
+    command: docker run --rm -ti --env=DISPLAY=unix${DISPLAY} --volume=/tmp/.X11-unix:/tmp/.X11-unix --volume=${HOME}:${HOME} desktop-qgis
+
+ports:
+  - port: 6080
+    onOpen: open-browser
